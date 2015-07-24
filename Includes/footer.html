@@ -1,0 +1,86 @@
+			<!-- END CONTENT -->
+			<p><br clear="all" /></p>
+		</div>
+		
+		<div class="sidebar">	
+			
+			<!-- SIDEBAR -->
+			
+<?php // Show the user info or the login form:
+ if (isset($_SESSION['user_id'])) {
+
+	// Show basic user options:
+	// Includes references to some bonus material discussed in Chapter 5!
+	echo '<div class="title">
+			<h4>Manage Your Account</h4>
+			</div>
+			<ul>	
+			<li><a href="renew.php" title="Renew Your Account*">Renew Account*</a></li>
+			<li><a href="change_password.php" title="Change Your Password">Change Password</a></li>
+			<li><a href="payment.php" title="Payment">Payment*</a></li>
+			<li><a href="submitAbs.php" title="Submit Abstract">Submit Abstract</a></li>
+			<li><a href="check_abs.php" title="My Abstract">My Abstract</a></li>
+			<li><a href="viewbal.php" title="viewbalance">Vew Balance</a></li>
+			<li><a href="logout.php" title="Logout">Logout</a></li>
+			</ul>
+			';
+			
+	// check for user type to assign different privilege:
+
+	if (isset($_SESSION['utype_sh'])) {
+		echo '<div class="title">
+					<h4>Session Management</h4>
+				</div>
+				<ul>
+				<li><a href="check_abstract.php" title="Check Abstract">Check Abstract*</a></li>
+				<li><a href="request_modification.php" title="request_modification">request_modification*</a></li>
+				<li><a href="#" title="BlahBlah">BlahBlah*</a></li>
+				</ul>
+				';
+	}
+	//Implement approve  or reject function in the check_abstract.php page
+	if (isset($_SESSION['utype_bm'])) {
+		echo '<div class="title">
+					<h4>Manager Management</h4>
+				</div>
+				<ul>
+				<li><a href="user_list.php" title="Check Member List">User List</a></li>
+				<li><a href="sh_list.php" title="Check Session Head List">Session Head List</a></li>
+				<li><a href="acct_balance.php" title="Check Accounts Balance">Check Accounts Balance*</a></li>
+				<li><a href="session_management.php" title="Session Management">Session Management*</a></li>
+				<li><a href="acct_balance.php" title="Check Accounts Balance">Check Accounts Balance*</a></li>
+				<li><a href="#" title="BlahBlah">BlahBlah*</a></li>
+				</ul>
+				';
+	}
+	if (isset($_SESSION['utype_admin'])) {
+		echo '<div class="title">
+					<h4>Site Administration</h4>
+				</div>
+				<ul>
+				<li><a href="adjust.php" title="System Rights Authorization">System Rights Authorization</a></li>
+				<li><a href="add_page.php" title="Add a Page">Add Page</a></li>
+				<li><a href="add_pdf.php" title="Add a PDF">Add PDF</a></li>
+				<li><a href="#" title="BlahBlah">BlahBlah</a></li>
+				</ul>
+				';		
+	}	
+	
+					
+} else { // Show the login form:
+	
+	require ('includes/login_form.inc.php');
+	
+}
+?>
+
+	
+		</div>
+		
+		<div class="footer">
+			<p><a href="sitemap.php" title="Site Map">Site Map</a> | <a href="policies.php" title="Site Policies">Policies</a> &nbsp; - &nbsp; &copy; Copyright 2012 - Missouri Academy of Science - All Rights Reserved&nbsp; - &nbsp; Design by <a href="http://mas.csmwsu.org/Impact/">Impact Group</a></p> 
+		</div>	
+	</div>
+</div>
+</body>
+</html>
